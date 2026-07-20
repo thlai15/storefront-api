@@ -1,12 +1,4 @@
 apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: storefront
-  description: Storefront demo — product catalog, ordering, and web frontend.
-spec:
-  owner: user:thlai15
----
-apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: storefront-api
@@ -16,14 +8,10 @@ metadata:
   tags:
     - fastapi
     - python
-  links:
-    - url: http://localhost:8000/docs
-      title: API docs (Swagger UI)
-      icon: docs
 spec:
   type: service
   lifecycle: experimental
-  owner: user:thlai15
+  owner: group:backend-team
   system: storefront
   providesApis:
     - storefront-api
@@ -32,11 +20,49 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: storefront-api
-  description: REST API for products and orders.
+  description: API for the storefront service
 spec:
   type: openapi
   lifecycle: experimental
-  owner: user:thlai15
+  owner: group:backend-team
   system: storefront
-  definition:
-    $text: http://localhost:8000/openapi.json
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Storefront API
+      version: 1.0.0
+    paths:
+      /products:
+        get:
+          summary: List products
+          responses:
+            '200':
+              description: A list of products
+      /health:
+        get:
+          summary: Health check
+          responses:
+            '200':
+              description: Service is healthy
+      /order:
+        post:
+          summary: Create an order
+          requestBody:
+            description: Order details
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    productId:
+                      type: string
+                    quantity:
+                      type: integer
+          responses:
+            '201':
+              description: Order created successfully
+            '400':
+              description: Invalid order request
+
+
