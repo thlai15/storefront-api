@@ -14,7 +14,7 @@ spec:
   owner: group:backend-team
   system: storefront
   providesApis:
-    - storefront-x-api
+    - storefront-api
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
