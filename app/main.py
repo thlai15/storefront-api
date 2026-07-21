@@ -4,6 +4,8 @@ import uuid
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from prometheus_fastapi_instrumentator import Instrumentator
+
 from app.config import get_settings
 from app.db.session import engine
 from app.models.base import Base
@@ -22,6 +24,8 @@ app = FastAPI(
     version="0.1.0",
     description="Product catalog and order management service for the storefront demo.",
 )
+
+Instrumentator().instrument(app).expose(app)
 
 app.add_middleware(
     CORSMiddleware,
