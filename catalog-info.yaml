@@ -5,7 +5,7 @@ metadata:
   description: Product catalog and order management API for the storefront demo.
   annotations:
     github.com/project-slug: thlai15/storefront-api
-    grafana/alert-label-selector: value
+    grafana/alert-label-selector: "service=storefront-api"
     grafana/dashboard-selector: "tags @> 'storefront-api'"
   tags:
     - fastapi
