@@ -1,0 +1,7 @@
+site_name: 'storefront-api'
+nav:
+  - Home: index.md
+  - API Reference: api-reference.md
+  - Architecture: architecture.md
+plugins:
+  - techdocs-core

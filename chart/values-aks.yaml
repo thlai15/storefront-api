@@ -1,0 +1,4 @@
+image:
+  repository: storefront4e3lkx.azurecr.io/storefront-api
+ingress:
+  host: storefront.172.179.93.243.nip.io
